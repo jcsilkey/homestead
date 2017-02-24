@@ -19,7 +19,11 @@ class Homestead
         config.vm.hostname = settings["hostname"] ||= "homestead"
 
         # Configure A Private Network IP
-        config.vm.network :private_network, ip: settings["ip"] ||= "192.168.10.10"
+        if settings.has_key?("ip")
+          config.vm.network :private_network, ip: settings["ip"] ||= "192.168.10.10"
+        else
+          config.vm.network :private_network, type: "dhcp"
+        end
 
         # Configure Additional Networks
         if settings.has_key?("networks")
