@@ -20,7 +20,7 @@ block="server {
     server_name $1;
     root \"$2\";
 
-    index.html;
+    index index.html;
 
     charset utf-8;
 
